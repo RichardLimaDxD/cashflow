@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Tests", "tests\V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{96D47580-7614-4F4E-8C6A-667195190B6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{1B2C5100-A344-4A9D-BCB6-AF7B5A770F0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{1B2C5100-A344-4A9D-BCB6-AF7B5A770F0E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4CE05A5D-7F08-46E6-B990-343CBB2F0674}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{1B2C5100-A344-4A9D-BCB6-AF7B5A770F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B2C5100-A344-4A9D-BCB6-AF7B5A770F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B2C5100-A344-4A9D-BCB6-AF7B5A770F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE05A5D-7F08-46E6-B990-343CBB2F0674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE05A5D-7F08-46E6-B990-343CBB2F0674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE05A5D-7F08-46E6-B990-343CBB2F0674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE05A5D-7F08-46E6-B990-343CBB2F0674}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
