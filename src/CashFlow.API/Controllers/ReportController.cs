@@ -5,9 +5,7 @@ using System.Net.Mime;
 
 namespace CashFlow.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ReportController : ControllerBase
+    public class ReportController : CashflowBaseController
     {
         [HttpGet("excel")]
         [ProducesResponseType(StatusCodes.Status200OK)]

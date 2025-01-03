@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CashFlow.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ExpensesController : ControllerBase
+
+    public class ExpensesController : CashflowBaseController
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredExpenseJson), StatusCodes.Status201Created)]
