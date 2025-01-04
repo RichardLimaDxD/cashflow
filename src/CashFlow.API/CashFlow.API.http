@@ -1,6 +1,26 @@
-@CashFlow.API_HostAddress = http://localhost:5275
-
-GET {{CashFlow.API_HostAddress}}/weatherforecast/
-Accept: application/json
+@CashFlow.API_HostAddress = https://localhost:60129
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlJpY2hhcmQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI4NWJhYjMxYi01YjViLTQ5OWMtOWIzOS03MjNhYWE3OTgzMTciLCJuYmYiOjE3MzU5NTM2ODgsImV4cCI6MTczNjAxMzY4OCwiaWF0IjoxNzM1OTUzNjg4fQ.wrJFIzz9fjFpS1Yr-BWSx-reepRYeS5A-D0vEPkjExY
 
 ###
+
+POST {{CashFlow.API_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "richard@mail.com",
+  "password": "!Richard123"
+}
+
+###
+
+POST {{CashFlow.API_HostAddress}}/expenses
+Content-Type: application/json
+Authorization: Bearer {{ACCESS_JWT}}
+
+{
+  "title": "iphone 11",
+  "description": "description iphone 11",
+  "date": "2025-01-04T01:17:01.629Z",
+  "amount": 200,
+  "paymentType": 1
+}
