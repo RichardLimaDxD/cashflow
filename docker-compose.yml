@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: src/CashFlow.API/Dockerfile
+    ports:
+      - 8080:8080
+      - 8081:8081
     networks:
       - app_network
     depends_on:

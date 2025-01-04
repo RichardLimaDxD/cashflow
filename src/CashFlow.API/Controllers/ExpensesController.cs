@@ -69,7 +69,6 @@ namespace CashFlow.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-
         public async Task<IActionResult> Update(
             [FromServices] IUpdateExpenseUseCase useCase,
             [FromRoute] long id,
