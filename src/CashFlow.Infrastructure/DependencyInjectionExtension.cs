@@ -49,8 +49,7 @@ namespace CashFlow.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("Connection");
 
-            var version = new Version(8, 0);
-            var serverVersion = new MySqlServerVersion(version);
+            var serverVersion = ServerVersion.AutoDetect(connectionString);
 
             services.AddDbContext<CashFlowDbContext>(config => config
                 .UseMySql(connectionString, serverVersion));
