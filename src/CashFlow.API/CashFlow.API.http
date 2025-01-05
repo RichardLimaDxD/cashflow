@@ -1,5 +1,5 @@
-@CashFlow.API_HostAddress = https://localhost:61740
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlZvbGliZWFyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiYzdhNzRjM2MtOGZhZi00YmZiLWFjNDMtYWRmMTEyOWUyZmM2IiwibmJmIjoxNzM2MTA4MTEzLCJleHAiOjE3MzYxNjgxMTMsImlhdCI6MTczNjEwODExM30.cNyuvCaJjUKlHbE_-SnIYCIpE8VpwRNM0XzkCIM2hZ4
+@CashFlow.API_HostAddress = https://localhost:8081
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlJpY2hhcmQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI4NWJhYjMxYi01YjViLTQ5OWMtOWIzOS03MjNhYWE3OTgzMTciLCJyb2xlIjoidGVhbU1lbWJlciIsIm5iZiI6MTczNjExNjIwMiwiZXhwIjoxNzM2MTc2MjAyLCJpYXQiOjE3MzYxMTYyMDJ9.IyOqQScK-IPZE02oWxqfWnTllZ9PFAMnIoz_sHLFGxE
 @Expense_Id = 13
 
 ###
@@ -75,3 +75,18 @@ Authorization: Bearer {{ACCESS_JWT}}
 
 DELETE {{CashFlow.API_HostAddress}}/expenses/{{Expense_Id}}
 Authorization: Bearer {{ACCESS_JWT}}
+
+### 
+
+GET {{CashFlow.API_HostAddress}}/report/pdf
+Authorization: Bearer {{ACCESS_JWT}}
+Accept-Language: pt-BR
+month: 2025-01
+
+###
+
+GET {{CashFlow.API_HostAddress}}/report/excel
+Authorization: Bearer {{ACCESS_JWT}}
+Accept-Language: pt-BR
+month: 2025-01
+  
