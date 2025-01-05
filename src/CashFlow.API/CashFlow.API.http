@@ -1,5 +1,6 @@
-@CashFlow.API_HostAddress = https://localhost:8081
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlJpY2hhcmQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI4NWJhYjMxYi01YjViLTQ5OWMtOWIzOS03MjNhYWE3OTgzMTciLCJuYmYiOjE3MzYwMTA3MzEsImV4cCI6MTczNjA3MDczMSwiaWF0IjoxNzM2MDEwNzMxfQ.5lioZPjLUBYg7CIC7CJaRi7TvtFkEhD35Xzx7-E9siw
+@CashFlow.API_HostAddress = https://localhost:61740
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlZvbGliZWFyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiYzdhNzRjM2MtOGZhZi00YmZiLWFjNDMtYWRmMTEyOWUyZmM2IiwibmJmIjoxNzM2MTA4MTEzLCJleHAiOjE3MzYxNjgxMTMsImlhdCI6MTczNjEwODExM30.cNyuvCaJjUKlHbE_-SnIYCIpE8VpwRNM0XzkCIM2hZ4
+@Expense_Id = 13
 
 ###
 
@@ -13,6 +14,27 @@ Content-Type: application/json
 
 ###
 
+POST {{CashFlow.API_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "volibear@mail.com",
+  "password": "!Password123"
+}
+
+###
+
+POST {{CashFlow.API_HostAddress}}/user
+Content-Type: application/json
+
+{
+  "name": "Volibear",
+  "email": "volibear@mail.com",
+  "password": "!Password123"
+}
+
+###
+
 POST {{CashFlow.API_HostAddress}}/expenses
 Content-Type: application/json
 Authorization: Bearer {{ACCESS_JWT}}
@@ -20,7 +42,36 @@ Authorization: Bearer {{ACCESS_JWT}}
 {
   "title": "iphone 11",
   "description": "description iphone 11",
-  "date": "2025-01-04T01:17:01.629Z",
+  "date": "2025-01-05T20:16:30.351Z",
   "amount": 200,
   "paymentType": 1
 }
+
+###
+
+PUT {{CashFlow.API_HostAddress}}/expenses/{{Expense_Id}}
+Content-Type: application/json
+Authorization: Bearer {{ACCESS_JWT}}
+
+{
+  "title": "iphone 11 modificado",
+  "description": "description iphone 11",
+  "date": "2025-01-05",
+  "amount": 1200,
+  "paymentType": 1
+}
+
+###
+
+GET {{CashFlow.API_HostAddress}}/expenses
+Authorization: Bearer {{ACCESS_JWT}}
+
+### 
+
+GET {{CashFlow.API_HostAddress}}/expenses/{{Expense_Id}}
+Authorization: Bearer {{ACCESS_JWT}}
+
+###
+
+DELETE {{CashFlow.API_HostAddress}}/expenses/{{Expense_Id}}
+Authorization: Bearer {{ACCESS_JWT}}
