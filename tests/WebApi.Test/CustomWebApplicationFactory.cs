@@ -1,4 +1,6 @@
-﻿using CashFlow.Domain.Security.Cryptography;
+﻿using CashFlow.Domain.Entities;
+using CashFlow.Domain.Security.Cryptography;
+using CashFlow.Domain.Security.Tokens;
 using CashFlow.Infrastructure.DataAccess;
 using CommonTestUtilities.Entities;
 using Microsoft.AspNetCore.Hosting;
@@ -10,8 +12,11 @@ namespace WebApi.Test
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
+        private Expense _expense;
+
         private CashFlow.Domain.Entities.User _user;
         private string _password;
+        private string _token;
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -32,6 +37,9 @@ namespace WebApi.Test
                     var passwordEncripter = scope.ServiceProvider.GetRequiredService<IPasswordEncrypter>();
 
                     StartDatabase(dbContext, passwordEncripter);
+
+                    var tokenGenerator = scope.ServiceProvider.GetService<IAccessTokenGenerator>();
+                    _token = tokenGenerator.Generate(_user);
                 });
         }
 
@@ -41,7 +49,20 @@ namespace WebApi.Test
 
         public string GetPassword() => _password;
 
+        public string GetToken() => _token;
+
+        public long GetExpenseId() => _expense.Id;
+
         private void StartDatabase(CashFlowDbContext dbContext, IPasswordEncrypter passwordEncrypter)
+        {
+            AddUsers(dbContext, passwordEncrypter);
+
+            AddExpenses(dbContext, _user);
+
+            dbContext.SaveChanges();
+        }
+
+        private void AddUsers(CashFlowDbContext dbContext, IPasswordEncrypter passwordEncrypter)
         {
             _user = UserBuilder.Build();
             _password = _user.Password;
@@ -49,8 +70,13 @@ namespace WebApi.Test
             _user.Password = passwordEncrypter.Encrypt(_user.Password);
 
             dbContext.Users.Add(_user);
+        }
 
-            dbContext.SaveChanges();
+        private void AddExpenses(CashFlowDbContext dbContext, User user)
+        {
+            _expense = ExpenseBuilder.Build(user);
+
+            dbContext.Expenses.Add(_expense);
         }
     }
 }

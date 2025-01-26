@@ -12,7 +12,21 @@ using CashFlow.Infrastructure.Extensions;
 using CashFlow.API.Token;
 using CashFlow.Domain.Security.Tokens;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        });
+});
 
 builder.Services.AddControllers()
      .AddJsonOptions(options => options
@@ -87,6 +101,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseMiddleware<CultureMiddleware>();
 

@@ -33,7 +33,7 @@ namespace CashFlow.Application.UseCases.Expenses.Reports.Pdf
         {
             var loggedUser = await _loggedUser.Get();
 
-            var expenses = await _repository.FilterByMonth(month);
+            var expenses = await _repository.FilterByMonth(loggedUser, month);
 
             if (expenses.Count == 0)
                 return [];

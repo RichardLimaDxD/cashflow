@@ -23,7 +23,7 @@ namespace CashFlow.Application.UseCases.Expenses.Reports.Excel
         {
             var logged = await _loggedUser.Get();
 
-            var expenses = await _repository.FilterByMonth(month);
+            var expenses = await _repository.FilterByMonth(logged, month);
 
             if (expenses.Count == 0)
                 return [];

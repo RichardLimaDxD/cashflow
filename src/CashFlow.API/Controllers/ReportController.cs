@@ -7,7 +7,7 @@ using System.Net.Mime;
 
 namespace CashFlow.API.Controllers
 {
-    [Authorize(Roles = Roles.TEAM_MEMBER)]
+    [Authorize(Roles = Roles.ADMIN)]
     public class ReportController : CashflowBaseController
     {
         [HttpGet("excel")]
