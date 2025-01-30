@@ -1,5 +1,5 @@
 @CashFlow.API_HostAddress = https://localhost:8081
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlJpY2hhcmQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI4NWJhYjMxYi01YjViLTQ5OWMtOWIzOS03MjNhYWE3OTgzMTciLCJyb2xlIjoidGVhbU1lbWJlciIsIm5iZiI6MTczNjExNjIwMiwiZXhwIjoxNzM2MTc2MjAyLCJpYXQiOjE3MzYxMTYyMDJ9.IyOqQScK-IPZE02oWxqfWnTllZ9PFAMnIoz_sHLFGxE
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlJpY2hhcmQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI4NWJhYjMxYi01YjViLTQ5OWMtOWIzOS03MjNhYWE3OTgzMTciLCJyb2xlIjoiYWRtaW5pc3RyYXRvciIsIm5iZiI6MTczODI0NjE1MywiZXhwIjoxNzM4MzA2MTUzLCJpYXQiOjE3MzgyNDYxNTN9.FfUEW35qXhmgeBs79vzYaGUwlxsPcf7jDeEMXu7h0z4
 @Expense_Id = 13
 
 ###
@@ -11,6 +11,11 @@ Content-Type: application/json
   "email": "richard@mail.com",
   "password": "!Richard123"
 }
+
+###
+
+GET {{CashFlow.API_HostAddress}}/user
+Authorization: Bearer {{ACCESS_JWT}}
 
 ###
 
