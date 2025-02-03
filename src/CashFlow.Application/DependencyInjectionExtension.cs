@@ -7,6 +7,7 @@ using CashFlow.Application.UseCases.Expenses.Reports.Excel;
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf;
 using CashFlow.Application.UseCases.Expenses.Update;
 using CashFlow.Application.UseCases.Login.DoLogin;
+using CashFlow.Application.UseCases.Users.ChangePassword;
 using CashFlow.Application.UseCases.Users.Profile;
 using CashFlow.Application.UseCases.Users.Register;
 using CashFlow.Application.UseCases.Users.Update;
@@ -29,20 +30,37 @@ namespace CashFlow.Application
 
         private static void AddUseCases(IServiceCollection services)
         {
+            AddExpenseUseCase(services);
+
+            AddReportUseCase(services);
+
+            AddUserUseCase(services);
+
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+        }
+
+        private static void AddExpenseUseCase(IServiceCollection services)
+        {
             services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();
             services.AddScoped<IGetAllExpenseUseCase, GetAllExpenseUseCase>();
             services.AddScoped<IGetExpenseByIdUseCase, GetExpenseByIdUseCase>();
             services.AddScoped<IDeleteExpenseUseCase, DeleteExpenseUseCase>();
             services.AddScoped<IUpdateExpenseUseCase, UpdateExpenseUseCase>();
+        }
 
+        private static void AddReportUseCase(IServiceCollection services)
+        {
             services.AddScoped<IGenerateExpensesReportExcelUseCase, GenerateExpensesReportExcelUseCase>();
             services.AddScoped<IGenerateExpensesReportPdfUseCase, GenerateExpensesReportPdfUseCase>();
+        }
 
+        private static void AddUserUseCase(IServiceCollection services)
+        {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
             services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
+            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
 
-            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
         }
     }
 }
