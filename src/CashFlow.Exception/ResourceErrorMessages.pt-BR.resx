@@ -159,4 +159,7 @@
   <data name="UNKOWN_ERROUNKOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
+  <data name="USER_NOT_FOUND" xml:space="preserve">
+    <value>Usuário não encontrado.</value>
+  </data>
 </root>

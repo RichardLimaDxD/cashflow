@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CashFlow.Communication.Responses;
 using CashFlow.Domain.Services.LoggedUser;
+using CashFlow.Exception;
+using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Users.Profile
 {
@@ -18,6 +20,9 @@ namespace CashFlow.Application.UseCases.Users.Profile
         public async Task<ResponseUserProfileJson> Execute()
         {
             var user = await _loggedUser.Get();
+
+            if (user is null)
+                throw new NotFoundException(ResourceErrorMessages.USER_NOT_FOUND);
 
             return _mapper.Map<ResponseUserProfileJson>(user);
         }
