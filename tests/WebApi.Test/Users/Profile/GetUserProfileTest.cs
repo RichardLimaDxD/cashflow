@@ -35,5 +35,21 @@ namespace WebApi.Test.Users.Profile
             response.RootElement.GetProperty("name").GetString().Should().Be(_userName);
             response.RootElement.GetProperty("email").GetString().Should().Be(_userEmail);
         }
+
+        [Fact]
+        public async Task Error_Token_Invalid()
+        {
+            var response = await DoGet(requestUri: METHOD, token: "tokenInvalid");
+
+            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+        }
+
+        [Fact]
+        public async Task Error_Without_Token()
+        {
+            var response = await DoGet(requestUri: METHOD, token: string.Empty);
+
+            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+        }
     }
 }
